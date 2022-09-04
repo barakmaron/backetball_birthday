@@ -4,6 +4,6 @@ import allReducers from './reducers';
 
 export const store = configureStore({
     reducer: allReducers,
-    middleware: thunkMiddleware,
+    middleware: [thunkMiddleware],
     preloadState: {}
 });
