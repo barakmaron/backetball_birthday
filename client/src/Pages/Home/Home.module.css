@@ -1,0 +1,129 @@
+.main {
+
+}
+
+.main_container {
+  box-shadow: 0px -9px 10px 4px #000;
+  background-image: url(../../../public/images/main_background.webp);
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 50vh;
+}
+
+.main_image {
+  background-image: url(../../../public/images/ohad_brant.jpg);
+  background-position: center;
+  width: 256px;
+  height: 256px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.main_text {
+  text-align: right;
+  color: #e48125;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_text h1 {
+  font-family: main;
+  font-size: 2.75rem;
+  padding: 10px;
+  text-align: center;
+}
+
+.main_text p {
+  text-align: center;
+  max-width: 600px;
+  padding: 15px;
+}
+
+.basketball {
+  background-image: url(../../../public/images/Basketball.png);
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.trophy {
+  background-image: url(../../../public/images/trophy.png);
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 0;
+}
+
+.conpety {
+  background-image: url(../../../public/images/conpety.png);
+  height: 300px;
+  width: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: -24px;
+  z-index: -1;
+  top: 25px;
+}
+
+.second_container {
+  background-color: #e48125;
+  padding: 20px;
+}
+
+.cards {
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+  gap: 25px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e48125;   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 2ms ease;
+  top: 0;
+}
+
+.card:hover {
+  top: -15px;
+  transition: all 2ms ease;
+  box-shadow: 0px 0px 5px 1px #fff; 
+}
+
+.card span {
+  font-size: 30px;
+  color: #fff;
+  background-color: #e48125;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 2px 0px 1px 4px #ffcfa2;
+}
+
+.card h2 {
+  font-family: main;
+  color: #e48125;
+  text-shadow: 2px 0px 0px #ffcfa2;
+  font-size: 30px;
+}
+
+.card p {
+  text-align: center;
+  max-width: 400px;
+}
