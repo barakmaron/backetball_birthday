@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@font-face {
+  font-family: main;
+  src: url(../public/fonts/VarelaRound-Regular.ttf);
+}
+
+@font-face {
+  font-family: second;
+  src: url(../public/fonts/nachlieliclm-light-webfont.ttf);
+}
