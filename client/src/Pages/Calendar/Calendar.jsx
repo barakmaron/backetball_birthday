@@ -1,14 +1,38 @@
-import styles from '../styles/calendar.module.css';
-import React from 'react';
-import DaysHeader from '../components/Calendar/DaysHeader';
+import styles from './Calendar.module.css';
+import React, { useCallback, useEffect, useState } from 'react';
+import DaysHeader from '../../Components/Calendar/DaysHeader';
 import { FcRotateToPortrait } from 'react-icons/fc';
-import CalendarActionsConnector from '../components/Calendar/CalendarActions/CalendarActionsConnector';
-import DaysInCalendarConnector from '../components/Calendar/DaysInCalendar/DaysInCalendarConnector';
+import CalendarActionsConnector from '../../Components/Calendar/CalendarActions/CalendarActionsConnector';
+import DaysInCalendarConnector from '../../Components/Calendar/DaysInCalendar/DaysInCalendarConnector';
+import Modal from '../../Components/Modal/Modal';
+import Form from '../../Components/Form/Form';
+import Constants from '../../Constants';
 
-const CalendarPage = () => {
-  return (<>
-    <div className='container mx-auto mt-10'>
-        <div className="wrapper bg-white rounded shadow w-full  portrait:hidden relative">
+const CalendarPage = ({ 
+    GetEventsAction,
+    AddEventAction,
+    month
+}) => {
+    const [add_event_modal, setShowAddEventModal] = useState(false);
+    const [date_clicked, setDateClick] = useState(null);
+
+    const BlockClick = useCallback((date) => {
+        setDateClick(date);
+        setShowAddEventModal(true);
+    }, [setDateClick, setShowAddEventModal]);
+
+    useEffect(() => {
+        GetEventsAction();
+    }, [GetEventsAction, month]);
+
+    const SubmitNewEvent = useCallback((event, form) => {
+        event.preventDefault();
+        AddEventAction(form, date_clicked);
+    }, [AddEventAction, date_clicked]);
+    
+  return (<div className=' overflow-x-clip'>
+    <div className='container mx-auto mt-10 mb-28'>
+        <div className="wrapper bg-white rounded shadow w-full portrait:hidden relative">
             <div className="header flex justify-between border-b p-2">                
                 <CalendarActionsConnector />
             </div>
@@ -17,7 +41,8 @@ const CalendarPage = () => {
                     <DaysHeader></DaysHeader>
                 </thead>
                 <tbody >
-                    <DaysInCalendarConnector />
+                    <DaysInCalendarConnector 
+                    blockOnClick={BlockClick}/>
                 </tbody>
             </table>
             <div className={styles.court_image}></div>           
@@ -27,7 +52,14 @@ const CalendarPage = () => {
             סובב מכשיר בכדי לראות את הלוז
         </div>
     </div>
-    </>)
+    { add_event_modal && 
+        <Modal
+        setClose={() => setShowAddEventModal(false)}>
+            <Form 
+            action={SubmitNewEvent}
+            inputs={Constants.add_event_form_inputs}></Form>
+        </Modal>}
+    </div>)
 };
 
 export default CalendarPage;
