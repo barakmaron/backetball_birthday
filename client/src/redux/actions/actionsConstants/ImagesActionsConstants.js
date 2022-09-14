@@ -1,0 +1,8 @@
+const ACTIONS = {
+    GET_IMAGES: "GET_IMAGES",
+    ADD_IMAGE: "ADD_IMAGE",
+    DELETE_IMAGE: "DELETE_IMAGE",
+    EDIT_ALT_IMAGE: "EDIT_ALT_IMAGE"
+};
+
+export default ACTIONS;
