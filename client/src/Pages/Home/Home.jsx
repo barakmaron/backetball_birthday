@@ -2,7 +2,7 @@
 import { BiTimeFive } from 'react-icons/bi';
 import { FaChild } from 'react-icons/fa';
 import { GiTennisCourt } from 'react-icons/gi';
-import Gallery from '../../Components/Gallery';
+import GalleryConnector from '../../Components/Gallery/GalleryConnector';
 import styles from './Home.module.css';
 
 const Home = () => {
@@ -46,7 +46,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <Gallery></Gallery>
+        <GalleryConnector></GalleryConnector>
     </div>
   )
 }
