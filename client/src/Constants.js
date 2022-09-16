@@ -80,6 +80,14 @@ const login_form = [{
   place_holder: "סיסמה"
 }];
 
+const user_messages = {
+  images_edit_successful: "",
+  images_delete_successful: "",
+  image_upload_successful: "",
+  add_event_successful: "",
+  delete_event_successful: ""
+};
+
 const Constants = {
   API_METHODS,
   routes,
@@ -88,7 +96,8 @@ const Constants = {
   days_array_heb,
   month_array_heb,
   add_event_form_inputs,
-  login_form
+  login_form, 
+  user_messages
 };
 
 export default Constants;
