@@ -3,7 +3,8 @@ import ACTIONS from "../actions/actionsConstants/CalendarActionsConstants";
 
 const initialState = {
     month: moment().month(),
-    year: moment().year()
+    year: moment().year(),
+    events: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,19 @@ const reducer = (state = initialState, action) => {
             return { 
                 year: state.year - 1, 
                 month: 11 
+            };
+        }
+        case ACTIONS.GET_EVENT: {
+            return { ...state, events: payload };
+        }
+        case ACTIONS.ADD_EVENT: {
+            return { ...state, events: [ ...state.events, {
+                Date: payload
+            }]};
+        }
+        case ACTIONS.DELETE_EVENT: {
+            return { ...state, 
+                events: state.events.filter(event => event.id !== payload)
             };
         }
         default: {
