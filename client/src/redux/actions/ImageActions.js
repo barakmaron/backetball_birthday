@@ -1,6 +1,7 @@
 import Constants from "../../Constants";
 import SendApiRequest from "../../services/ApiService";
 import ACTIONS from "./actionsConstants/ImagesActionsConstants";
+import { failedAction, successfulAction } from "./ViewActions";
 
 const GetImages = (images) => ({
     type: ACTIONS.GET_IMAGES,
@@ -34,7 +35,7 @@ export const GetImagesAction = () => {
             const { images } = await SendApiRequest('images');
             dispatch(GetImages(images));
         } catch (err) {
-            throw err;
+            dispatch(failedAction(err.message));
         }
     };
 };
@@ -44,9 +45,9 @@ export const UploadImageAction = (form_data, temp_url) => {
         try {
             dispatch(UploadImage(form_data, temp_url));
             const res = await SendApiRequest('images', Constants.API_METHODS.POST, form_data);
-            // update image
+            dispatch(successfulAction(Constants.user_messages.image_upload_successful));
         } catch (err) {
-            throw err;
+            dispatch(failedAction(err.message));
         }
     }
 };
@@ -56,9 +57,9 @@ export const DeleteImageAction = (id) => {
         try {
             dispatch(DeleteImage(id));
             const res = await SendApiRequest(`images/${id}`, Constants.API_METHODS.DELETE);
-            // seccessful
+            dispatch(successfulAction(Constants.user_messages.images_delete_successful));
         } catch (err) {
-            throw err;
+            dispatch(failedAction(err.message));
         }
     }
 };
@@ -70,8 +71,9 @@ export const EditAltAction = (id, new_alt) => {
             const res = await SendApiRequest(`images/${id}`, Constants.API_METHODS.PATCH, { 
                 alt: new_alt
             });
+            dispatch(successfulAction(Constants.user_messages.images_edit_successful));
         } catch (err) {
-            throw err;
+            dispatch(failedAction(err.message));
         }
     }
 }
