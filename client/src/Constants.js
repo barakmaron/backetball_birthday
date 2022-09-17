@@ -88,6 +88,8 @@ const user_messages = {
   delete_event_successful: ""
 };
 
+const number_images_per_page = 4;
+
 const Constants = {
   API_METHODS,
   routes,
@@ -97,7 +99,8 @@ const Constants = {
   month_array_heb,
   add_event_form_inputs,
   login_form, 
-  user_messages
+  user_messages,
+  number_images_per_page
 };
 
 export default Constants;
