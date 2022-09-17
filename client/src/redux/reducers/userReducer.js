@@ -11,7 +11,7 @@ const reducer = (state, action) => {
             return { logged_in: true };
         }
         default: {
-            return { ...state };
+            return initSate;
         }
     }
 };
