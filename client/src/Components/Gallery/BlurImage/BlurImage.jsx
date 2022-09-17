@@ -10,7 +10,7 @@ function cn(...classes) {
 
 const BlurImage = ({ 
     image, 
-    upload_page,
+    logged_in,
     DeleteImageAction,
     EditAltAction
 }) => {
@@ -51,7 +51,7 @@ const BlurImage = ({
                 : 'grayscale-0 blur-0 scale-100'
             )} />}
             
-            { upload_page && 
+            { logged_in && 
             <div>
                 <div className="absolute bottom-0 flex gap-4 h-fit w-fit px-3 py-3 bg-white cursor-pointer">
                     <FaTrash 
