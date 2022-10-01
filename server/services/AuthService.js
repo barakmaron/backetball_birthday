@@ -1,7 +1,7 @@
 import UsersDB from './storage/Users.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import TokensDB from './storage/Tokens.js';
+import Constants from '../Constants.js';
 
 async function Login(email, password) {
     try {
@@ -13,41 +13,19 @@ async function Login(email, password) {
     }
 }
 
-function GenerateToken(user_id, refresh_token = false) {
-    const base_token = (refresh_token && process.env.REFRESH_TOKEN) || process.env.ACCESS_TOKEN;
+function GenerateToken(user_id) {
+    const base_token = process.env.ACCESS_TOKEN;
     return jwt.sign({
         id: user_id
     }, base_token, { 
-        expiresIn: '10m'
+        expiresIn: Constants.TOKEN_MAX_AGE
     });
 }
 
-function GetRefreshTokens() {
-    try {
-        return TokensDB.GetAllTokens();
-    } catch (err) {
-        throw err;
-    }
-}
-
-function AddRefreshToken(token) {
-    try {
-        return TokensDB.AddToken(token);
-    } catch (err) {
-        throw err;
-    }
-}
-
-function VerifyRefreshToken(token) {
-    return jwt.verify(token, process.env.REFRESH_TOKEN);
-}
 
 const AuthService = {
     Login,
-    GenerateToken,
-    GetRefreshTokens,
-    AddRefreshToken,
-    VerifyRefreshToken
+    GenerateToken
 };
 
 export default AuthService;

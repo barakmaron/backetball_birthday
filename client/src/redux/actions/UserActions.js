@@ -7,12 +7,28 @@ const Login = () => ({
     type: ACTIONS.LOGIN
 });
 
+const Logout = () => ({
+    type: ACTIONS.LOGOUT
+});
+
 export const LoginAction = (login_form) => {
     return async (dispatch) => {
         try {
-            const user_token = await SendApiRequest('auth/login', Constants.API_METHODS.POST, login_form);
+            await SendApiRequest('auth/login', Constants.API_METHODS.POST, login_form);
             dispatch(Login());
         } catch (err) {
+            dispatch(failedAction(err.message));
+        }
+    }
+};
+
+export const AuthUserAction = () => {
+    return async (dispatch) => {
+        try {
+            await SendApiRequest('auth/token', Constants.API_METHODS.GET);
+            dispatch(Login());
+        } catch (err) {
+            dispatch(Logout());
             dispatch(failedAction(err.message));
         }
     }

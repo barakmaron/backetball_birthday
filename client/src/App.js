@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
@@ -9,6 +9,7 @@ import Constants from "./Constants";
 import UploadImageConnector from './Components/UploadImage/UploadImageConnector';
 import AdminConnector from "./Pages/Admin/AdminConnector";
 import { Toast } from 'monday-ui-react-core';
+import ContactConnector from "./Pages/Contact/ContactConnector";
 
 function App({
   failed,
@@ -16,6 +17,7 @@ function App({
   message,
   InitErrorSuccessAction
 }) {
+  const [show_contact, setShowContact] = useState(true);
 
   const close_toast = useCallback(() => {
 		InitErrorSuccessAction();
@@ -33,6 +35,7 @@ function App({
         <Route path="upload" element={<UploadImageConnector></UploadImageConnector>}/>
         <Route path="calendar" element={<CalendarPageConnector></CalendarPageConnector>}/>
       </Route>
+      <Route path="/contact" element={<ContactConnector></ContactConnector>} />
     </Routes>
     <footer className=" bg-orange-500">
         <Footer></Footer>

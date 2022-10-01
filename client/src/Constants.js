@@ -80,12 +80,27 @@ const login_form = [{
   place_holder: "סיסמה"
 }];
 
+const contact_form = [{
+  type: "text",
+  name: "full_name",
+  place_holder: "שם מלא"
+}, {
+  type: "text",
+  name: "phone_number",
+  place_holder: "טלפון"
+}, {
+  type: "email",
+  name: "email",
+  place_holder: "אימייל"
+}];
+
 const user_messages = {
-  images_edit_successful: "",
-  images_delete_successful: "",
-  image_upload_successful: "",
-  add_event_successful: "",
-  delete_event_successful: ""
+  images_edit_successful: "כיתוב התמונה נערך בהצלחה",
+  images_delete_successful: "התמונה נמחקה בהצלחה",
+  image_upload_successful: "העלאת התמונה הצליחה",
+  add_event_successful: "אירוע זה נוסף ליומן",
+  delete_event_successful: "אירוע נמחק בהצלחה",
+  send_contact_form: "טופס צור קשר נשלח בהצלחה"
 };
 
 const number_images_per_page = 4;
@@ -100,7 +115,8 @@ const Constants = {
   add_event_form_inputs,
   login_form, 
   user_messages,
-  number_images_per_page
+  number_images_per_page,
+  contact_form
 };
 
 export default Constants;

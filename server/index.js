@@ -5,14 +5,15 @@ import routes from './routes/index.js';
 import { sequelize } from "./db/models/index.js";
 import dotenv from 'dotenv';
 import ValidationErrorMiddleware from "./middleware/ValidationErrorMiddleware.js";
+import cookieParser from 'cookie-parser';
 dotenv.config();
 
 Promise.resolve(sequelize.sync());
 
 const port = process.env.PORT;
 const app = express();
-
-app.use([morgan("common"), cors(), express.json()]);
+app.use(cookieParser());
+app.use([morgan("common"), cors({ origin: true, credentials: true }), express.json()]);
 
 app.use('/', routes);
 
