@@ -5,7 +5,7 @@ const initState = {
     images: []
 };
 
-const reducer = (state, action) => {
+const reducer = (state = initState, action) => {
     const { type, payload } =  action;
 
     switch (type) {
@@ -35,8 +35,12 @@ const reducer = (state, action) => {
             image_to_change.Alt = alt;
             return { images: new_images_array };
         }
+        case ACTIONS.RESET_IMAGE_UPLOAD: {
+            state.images.pop();
+            return { images: [...state.images] };
+        }
         default: {
-            return { ...initState };
+            return state;
         }
     }
 };

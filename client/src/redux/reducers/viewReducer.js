@@ -6,7 +6,7 @@ const initState = {
     message: ""
 };
 
-const reducer = (state, action) => {
+const reducer = (state = initState, action) => {
     const { type, payload } = action;
     switch (type) {
         case ACTIONS.FAILED: {
@@ -19,7 +19,7 @@ const reducer = (state, action) => {
             return { ...initState };
         }
         default: {
-            return initState;
+            return state;
         }
     }
 };

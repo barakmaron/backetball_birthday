@@ -1,5 +1,6 @@
 const ACTIONS = {
-    LOGIN: "LOGIN"
+    LOGIN: "LOGIN",
+    LOGOUT: "LOGOUT"
 };
 
 export default ACTIONS;

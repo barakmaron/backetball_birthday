@@ -16,6 +16,10 @@ const UploadImage = (form_data, temp_url) => ({
     }
 });
 
+const ResetImageUpload = () => ({
+    type: ACTIONS.RESET_IMAGE_UPLOAD
+});
+
 const DeleteImage = (id) => ({
     type: ACTIONS.DELETE_IMAGE,
     payload: id
@@ -47,6 +51,7 @@ export const UploadImageAction = (form_data, temp_url) => {
             const res = await SendApiRequest('images', Constants.API_METHODS.POST, form_data);
             dispatch(successfulAction(Constants.user_messages.image_upload_successful));
         } catch (err) {
+            dispatch(ResetImageUpload());
             dispatch(failedAction(err.message));
         }
     }

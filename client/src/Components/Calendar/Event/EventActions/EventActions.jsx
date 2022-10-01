@@ -10,8 +10,8 @@ const EventActions = ({
 
   const [show_event_info, setShowEventInfo] = useState(false);
 
-  const DeleteEvent = useCallback((event) => {
-    event.stopPropagation();
+  const DeleteEvent = useCallback((e) => {
+    e.stopPropagation();
     DeleteEventAction(event.id);
   }, [DeleteEventAction, event]);
 

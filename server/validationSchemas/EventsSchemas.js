@@ -8,7 +8,7 @@ const NewEvent = {
         },
         full_name: {
             type: "string",
-            pattern: "(^[A-Za-z]{2,16})([ ]{0,1})([A-Za-z]{3,16})"
+            minLength: 3
         },
         phone_number: {
             type: "string",
