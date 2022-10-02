@@ -12,11 +12,11 @@ const router = express.Router();
 router.get('/', ImagesController.GetImages);
 router.get('/:file_name', ImagesController.GetImage);
 router.post('/', 
-    AuthenticateToken, 
+    AuthenticateToken,    
+    UploadImageMiddleware, 
     validate({
         body: ValidationSchemas.ImageSchemas.Upload
-    }),
-    UploadImageMiddleware, ImagesController.AddImage);
+    }), ImagesController.AddImage);
 
 router.patch('/:id', 
     AuthenticateToken, 
