@@ -8,6 +8,7 @@ const { validate } = new Validator();
 const router = express.Router();
 
 router.get('/:month/:year', EventsController.GetEvents);
+router.get('/:id', AuthenticateToken, EventsController.GetEvent);
 router.post('/:date', validate({
     body: ValidationSchemas.EventsSchemas.NewEvent
 }), EventsController.AddEvent);

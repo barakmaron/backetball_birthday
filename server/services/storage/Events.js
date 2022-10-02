@@ -31,7 +31,7 @@ async function AddEvent(date, email, full_name, phone_number) {
 }
 
 async function InsertEventInfo(email, full_name, phone_number, transaction) {
-    return EventsInfoModel.create({
+    return await EventsInfoModel.create({
         Email: email,
         FullName: full_name,
         PhoneNumber: phone_number
@@ -41,7 +41,7 @@ async function InsertEventInfo(email, full_name, phone_number, transaction) {
 }
 
 async function InsertEvent(date, event_info_id, transaction) {
-    return EventsModel.create({
+    return await EventsModel.create({
         Date: date,
         EventsInfoId: event_info_id
     }, {
@@ -50,17 +50,27 @@ async function InsertEvent(date, event_info_id, transaction) {
 }
 
 async function DeleteEvent(id) {
-    return EventsModel.destroy({
+    return await EventsModel.destroy({
         where: {
             id: id
         }
     });
 }
 
+async function GetEventInfo(event_info_id) {
+    return await EventsInfoModel.findOne({
+        where: {
+            id: event_info_id
+        }
+    });
+}
+
+
 const EventsDB = {
     GetEventsByMonthRange,
     AddEvent,
-    DeleteEvent
+    DeleteEvent,
+    GetEventInfo
 };
 
 export default EventsDB;
