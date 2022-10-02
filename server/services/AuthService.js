@@ -1,12 +1,11 @@
 import UsersDB from './storage/Users.js';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
 import Constants from '../Constants.js';
 
 async function Login(email, password) {
     try {
         const user = await UsersDB.FindUser(email);
-        const matching_passwords = await bcrypt.compare(password, user.Password);
+        const matching_passwords = password === user.Password;
         return (matching_passwords && user.id) || undefined;
     } catch (err) {
         throw err;
