@@ -17,7 +17,6 @@ const NewEvent = {
     }
 };
 
-
 const EventsSchemas = {
     NewEvent
 };
