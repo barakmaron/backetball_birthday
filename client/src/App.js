@@ -17,7 +17,6 @@ function App({
   message,
   InitErrorSuccessAction
 }) {
-  const [show_contact, setShowContact] = useState(true);
 
   const close_toast = useCallback(() => {
 		InitErrorSuccessAction();
@@ -40,19 +39,19 @@ function App({
     <footer className=" bg-orange-500">
         <Footer></Footer>
     </footer>
-    <StickyWhatsapp></StickyWhatsapp>  
-    <Toast 
-    open={successful} 
-    type={Toast.types.POSITIVE} 
-    autoHideDuration={3000} 
-    onClose={close_toast}
-    style={{"z-index": 999}}>{message}</Toast> 
-    <Toast 
-    open={failed} 
-    type={Toast.types.NEGATIVE} 
-    autoHideDuration={3000}
-    onClose={close_toast}
-    style={{"z-index": 999}}>{message}</Toast> 
+    <StickyWhatsapp></StickyWhatsapp> 
+    <div className="relative" style={{"zIndex": 5}}>
+      <Toast 
+      open={successful} 
+      type={Toast.types.POSITIVE} 
+      autoHideDuration={3000} 
+      onClose={close_toast}>{message}</Toast> 
+      <Toast 
+      open={failed} 
+      type={Toast.types.NEGATIVE} 
+      autoHideDuration={3000}
+      onClose={close_toast}>{message}</Toast> 
+    </div>
  </>);
 }
 
