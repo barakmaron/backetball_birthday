@@ -8,7 +8,13 @@ import ValidationErrorMiddleware from "./middleware/ValidationErrorMiddleware.js
 import cookieParser from 'cookie-parser';
 import ErrorHandler from './middleware/ErrorHandler.js';
 import RunSeed from './db/seeders/20221002082012-admin_users.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 Promise.resolve(sequelize.sync()).then(() => {
     const queryInterface = sequelize.getQueryInterface();
@@ -24,6 +30,11 @@ app.use('/', routes);
 
 app.get("/", (req, res) => {
     return res.status(200).json("ok");
+});
+
+app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
+app.get('*', function(req, res) {
+  res.sendFile('index.html', {root: path.join(__dirname, '../client/build/')});
 });
 
 app.use(ValidationErrorMiddleware);
