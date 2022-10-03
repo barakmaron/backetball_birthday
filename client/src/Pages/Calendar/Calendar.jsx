@@ -32,7 +32,7 @@ const CalendarPage = ({
     
   return (<div className=' overflow-x-clip'>
     <div className='container mx-auto mt-10 mb-28'>
-        <div className="wrapper bg-white rounded shadow w-full portrait:hidden relative">
+        <div className="wrapper bg-white rounded shadow w-full portrait:hidden relative sm:block">
             <div className="header flex justify-between border-b p-2">                
                 <CalendarActionsConnector />
             </div>
@@ -47,7 +47,7 @@ const CalendarPage = ({
             </table>
             <div className={styles.court_image}></div>           
         </div>
-         <div className='hidden portrait:flex flex-col gap-4 text-center text-2xl items-center'>
+         <div className='sm:hidden portrait:flex flex-col gap-4 text-center text-2xl items-center'>
             <FcRotateToPortrait className='text-6xl'></FcRotateToPortrait>
             סובב מכשיר בכדי לראות את הלוז
         </div>
