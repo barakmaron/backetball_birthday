@@ -28,10 +28,6 @@ app.use([morgan("common"), cors({ origin: true, credentials: true }), express.js
 
 app.use('/', routes);
 
-app.get("/", (req, res) => {
-    return res.status(200).json("ok");
-});
-
 app.use('/static', express.static(path.join(__dirname, '../client/build/static')));
 app.get('*', function(req, res) {
   res.sendFile('index.html', {root: path.join(__dirname, '../client/build/')});
