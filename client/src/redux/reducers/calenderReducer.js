@@ -32,7 +32,7 @@ const reducer = (state = initialState, action) => {
                 month: 11 
             };
         }
-        case ACTIONS.GET_EVENT: {
+        case ACTIONS.GET_EVENTS: {
             return { ...state, events: payload };
         }
         case ACTIONS.ADD_EVENT: {
@@ -44,6 +44,12 @@ const reducer = (state = initialState, action) => {
             return { ...state, 
                 events: state.events.filter(event => event.id !== payload)
             };
+        }
+        case ACTIONS.GET_EVENT: {
+            const find_event = state.events.find(event => event.id === payload.id);
+            const event_with_info = { ...find_event, ...payload.info };
+            const events_reduced = state.events.filter(event => event.id !== payload.id);
+            return { ...state, events: [ ...events_reduced, event_with_info ] };
         }
         default: {
             return state;

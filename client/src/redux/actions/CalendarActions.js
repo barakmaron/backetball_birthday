@@ -12,9 +12,27 @@ const DecrementMonth = () => ({
     type: ACTIONS.DECREMENT
 });
 
+const AddEvent = (date) => ({
+    type: ACTIONS.ADD_EVENT,
+    payload: date
+});
+
+const DeleteEvent = (event_id) => ({
+    type: ACTIONS.DELETE_EVENT,
+    payload: event_id
+});
+
 const GetEvents = (events) => ({
-    type: ACTIONS.GET_EVENT,
+    type: ACTIONS.GET_EVENTS,
     payload: events
+});
+
+const GetEventInfo = (event_info, event_id) => ({
+    type: ACTIONS.GET_EVENT,
+    payload: {
+        info: event_info,
+        id: event_id
+    }
 });
 
 export const incrementMonthAction = () => {
@@ -43,11 +61,6 @@ export const GetEventsAction = () => {
     };
 };
 
-const AddEvent = (date) => ({
-    type: ACTIONS.ADD_EVENT,
-    payload: date
-});
-
 export const AddEventAction = (form, date) => {
     return async (dispatch) => {
         try {
@@ -60,11 +73,6 @@ export const AddEventAction = (form, date) => {
     };
 }; 
 
-const DeleteEvent = (event_id) => ({
-    type: ACTIONS.DELETE_EVENT,
-    payload: event_id
-});
-
 export const DeleteEventAction = (event_id) => {
     return async (dispatch) => {
         try {
@@ -76,3 +84,14 @@ export const DeleteEventAction = (event_id) => {
         }
     };
 };
+
+export const GetEventAction = (event_info_id, event_id) => {
+    return async (dispatch) => {
+        try {            
+            const res = await SendApiRequest(`events/${event_info_id}`, Constants.API_METHODS.GET);
+            dispatch(GetEventInfo(res, event_id));
+        } catch (err) {
+            dispatch(failedAction(err.message));
+        }
+    }
+}
