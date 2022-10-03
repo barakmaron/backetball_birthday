@@ -23,6 +23,7 @@
     "node-cache": "^5.1.2",
     "nodemailer": "^6.7.8",
     "sequelize": "^6.21.4",
+    "sharp": "^0.31.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

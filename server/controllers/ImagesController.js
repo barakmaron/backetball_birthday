@@ -29,8 +29,9 @@ async function GetImage(req, res) {
 async function AddImage(req, res) {
     try {
         const { alt } = req.body;
-        const image_path = req.file.filename;
-        const add_image_to_db = await ImagesService.AddImage(alt, image_path);
+        const { path, filename } = req.file;
+        const image_ref = await ImagesService.ResizeAndStoreImage(path, filename);
+        const add_image_to_db = await ImagesService.AddImage(alt, image_ref);
         return res.status(200).json({
             add_image_to_db
         })
