@@ -39,7 +39,7 @@ export const GetImagesAction = () => {
             const { images } = await SendApiRequest('images');
             dispatch(GetImages(images));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.get_images_failed));
         }
     };
 };
@@ -52,7 +52,7 @@ export const UploadImageAction = (form_data, temp_url) => {
             dispatch(successfulAction(Constants.user_messages.image_upload_successful));
         } catch (err) {
             dispatch(ResetImageUpload());
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.upload_image_failed));
         }
     }
 };
@@ -64,7 +64,7 @@ export const DeleteImageAction = (id) => {
             const res = await SendApiRequest(`images/${id}`, Constants.API_METHODS.DELETE);
             dispatch(successfulAction(Constants.user_messages.images_delete_successful));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.delete_image_failed));
         }
     }
 };
@@ -78,7 +78,7 @@ export const EditAltAction = (id, new_alt) => {
             });
             dispatch(successfulAction(Constants.user_messages.images_edit_successful));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.edit_alt_failed));
         }
     }
 }

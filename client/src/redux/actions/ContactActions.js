@@ -8,7 +8,7 @@ export const SubmitContactFormAction = (form) => {
             await SendApiRequest('contact', Constants.API_METHODS.POST, form);
             dispatch(successfulAction(Constants.user_messages.send_contact_form));
         } catch (err) {
-            dispatch(failedAction(err.response.data.error.body[0].message));
+            dispatch(failedAction(Constants.user_messages.send_contact_form_failed));
         }
     } 
 };
