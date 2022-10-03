@@ -117,6 +117,8 @@ const user_messages = {
 
 const number_images_per_page = 4;
 
+const whatsapp_message = "שלום%20אני מעוניין ביום הולדת כדורסל%";
+
 const Constants = {
   API_METHODS,
   routes,
@@ -128,7 +130,8 @@ const Constants = {
   login_form, 
   user_messages,
   number_images_per_page,
-  contact_form
+  contact_form,
+  whatsapp_message
 };
 
 export default Constants;
