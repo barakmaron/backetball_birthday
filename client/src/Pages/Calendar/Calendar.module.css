@@ -1,0 +1,11 @@
+.court_image {
+    background-image: url(../../../public/images/24826.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 335px;
+    position: absolute;
+    bottom: -210px;
+    right: -15rem; 
+    z-index: -1;   
+}
