@@ -2,6 +2,7 @@ import SendApiRequest from "../../services/ApiService";
 import ACTIONS from "./actionsConstants/UserActionsConstants";
 import Constants from "../../Constants";
 import { failedAction } from "./ViewActions";
+import UserService from "../../services/UserService";
 
 const Login = () => ({
     type: ACTIONS.LOGIN
@@ -14,7 +15,8 @@ const Logout = () => ({
 export const LoginAction = (login_form) => {
     return async (dispatch) => {
         try {
-            await SendApiRequest('auth/login', Constants.API_METHODS.POST, login_form);
+            const form_encrypted_password = await UserService.EncryptForm(login_form);
+            await SendApiRequest('auth/login', Constants.API_METHODS.POST, form_encrypted_password);
             dispatch(Login());
         } catch (err) {
             dispatch(failedAction(err.message));
