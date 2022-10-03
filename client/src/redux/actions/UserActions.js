@@ -19,7 +19,7 @@ export const LoginAction = (login_form) => {
             await SendApiRequest('auth/login', Constants.API_METHODS.POST, form_encrypted_password);
             dispatch(Login());
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.login_failed));
         }
     }
 };
@@ -31,7 +31,7 @@ export const AuthUserAction = () => {
             dispatch(Login());
         } catch (err) {
             dispatch(Logout());
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.auth_user_failed));
         }
     }
 }

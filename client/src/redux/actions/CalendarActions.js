@@ -56,7 +56,7 @@ export const GetEventsAction = () => {
             const res = await SendApiRequest(`events/${month}/${year}`);
             dispatch(GetEvents(res.events));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.get_events_failed));
         }
     };
 };
@@ -68,7 +68,7 @@ export const AddEventAction = (form, date) => {
             const res = await SendApiRequest(`events/${date}`, Constants.API_METHODS.POST, form);
             dispatch(successfulAction(Constants.user_messages.add_event_successful));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.add_event_failed));
         }
     };
 }; 
@@ -80,7 +80,7 @@ export const DeleteEventAction = (event_id) => {
             const res = await SendApiRequest(`events/${event_id}`, Constants.API_METHODS.DELETE);
             dispatch(successfulAction(Constants.user_messages.delete_event_successful));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.delete_event_failed));
         }
     };
 };
@@ -91,7 +91,7 @@ export const GetEventAction = (event_info_id, event_id) => {
             const res = await SendApiRequest(`events/${event_info_id}`, Constants.API_METHODS.GET);
             dispatch(GetEventInfo(res, event_id));
         } catch (err) {
-            dispatch(failedAction(err.message));
+            dispatch(failedAction(Constants.user_messages.get_event_info_failed));
         }
     }
 }
