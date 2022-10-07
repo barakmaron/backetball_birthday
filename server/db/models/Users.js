@@ -16,7 +16,10 @@ const Users = (sequelize, DataTypes) => {
         },
         Email: {
             type: DataTypes.STRING,
-            unique: true
+            unique: true,
+            validate: {
+                isEmail: true
+            }
         },
         Password: {
             type: DataTypes.STRING
