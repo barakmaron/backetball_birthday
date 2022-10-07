@@ -2,6 +2,7 @@ import { TextField } from '@mui/material';
 import { useEffect } from 'react';
 import { useState, useCallback } from 'react';
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
+import useImageLoader from '../../../Hooks/useImageLoader';
 import { StaticFileLoader } from '../../../services/ApiService';
 
 function cn(...classes) {
@@ -14,8 +15,6 @@ const BlurImage = ({
     DeleteImageAction,
     EditAltAction
 }) => {
-   const [isLoading, setLoading] = useState(true);
-   const [image_obj, setImageObj] = useState(null);
    const [edit_alt, setEditAlt] = useState(false);
    const [changed_alt, setChangedAlt] = useState(image.Alt);
 
@@ -28,16 +27,7 @@ const BlurImage = ({
         setEditAlt(false);
     }, [image, changed_alt, EditAltAction]);
 
-    const image_loader = useCallback(async() => {
-        setLoading(true);
-        const image_loader = image.TempUrl ? image.TempUrl : await StaticFileLoader(image.Location, 'images');
-        setImageObj(image.TempUrl ? image.TempUrl : URL.createObjectURL(image_loader));
-        setLoading(false);
-    }, [image]);
-
-    useEffect(() => {        
-        image_loader();
-    }, []);
+   const [isLoading, image_obj] = useImageLoader(image.Location, image.TempUrl)
 
   return (<div>
         <div className="relative group w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
