@@ -49,7 +49,7 @@ const Recommendation = ({
                 className=" border-2 py-2 px-2 border-black border-solid"
                 onChange={(e) => setText(e.currentTarget.value)}
                 onBlur={submit_edit} />
-                : <p dir='rtl' className='text-center px-2'>{text}</p>}
+                : <p dir='rtl' className='text-center px-2 w-full h-fit'>{text}</p>}
             <RecommendationActionsConnector id={id} setEdit={setEdit}></RecommendationActionsConnector>                    
         </div>
         );

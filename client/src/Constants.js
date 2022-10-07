@@ -163,6 +163,7 @@ const user_messages = {
 };
 
 const number_images_per_page = 4;
+const number_of_recommendation_per_page = 4;
 
 const whatsapp_message = "שלום,%20אני מעוניין ביום הולדת כדורסל";
 
@@ -181,7 +182,8 @@ const Constants = {
   whatsapp_message,
   add_recommendation_form,
   INPUTS_TYPES,
-  upload_image_form
+  upload_image_form,
+  number_of_recommendation_per_page
 };
 
 export default Constants;
