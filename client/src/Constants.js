@@ -6,6 +6,16 @@ const API_METHODS = {
   DELETE: "delete"
 };
 
+const INPUTS_TYPES = {
+  TEXT: "text",
+  PASSWORD: "password",
+  TEXT_AREA: "textarea",
+  FILE: "file",
+  NUMBER: "number",
+  EMAIL: "email",
+  TEL: "tel"
+};
+
 const routes = [{
   label: "דף הבית",
   location: "/"
@@ -23,6 +33,9 @@ const admin_routes = [{
 }, {
   label: "לוח שנה",
   location: "/admin/calendar"
+}, {
+  label: "המלצות",
+  location: "/admin/recommendation"
 }];
 
 const days_array_heb = [
@@ -57,41 +70,69 @@ const contact_info = {
 };
 
 const add_event_form_inputs = [{
-  type: "text",
+  type: INPUTS_TYPES.TEXT,
   name: "full_name",
   place_holder: "שם מלא"
 }, {
-  type: "text",
+  type: INPUTS_TYPES.TEXT,
   name: "phone_number",
   place_holder: "טלפון"
 }, {
-  type: "email",
+  type: INPUTS_TYPES.EMAIL,
   name: "email",
   place_holder: "אימייל"
 }];
 
 const login_form = [{
-  type: "email",
+  type: INPUTS_TYPES.EMAIL,
   name: "email",
   place_holder: "אימייל"
 }, {
-  type: "password",
+  type: INPUTS_TYPES.PASSWORD,
   name: "password",
   place_holder: "סיסמה"
 }];
 
 const contact_form = [{
-  type: "text",
+  type: INPUTS_TYPES.TEXT,
   name: "full_name",
   place_holder: "שם מלא"
 }, {
-  type: "text",
+  type: INPUTS_TYPES.TEL,
   name: "phone_number",
   place_holder: "טלפון"
 }, {
-  type: "email",
+  type: INPUTS_TYPES.EMAIL,
   name: "email",
   place_holder: "אימייל"
+}];
+
+const add_recommendation_form = [{
+  type: INPUTS_TYPES.FILE,
+  name: "image",
+  place_holder: "הוסף תמונה"
+}, {
+  type: INPUTS_TYPES.TEXT,
+  name: "Name",
+  place_holder: "שם מלא"
+}, {
+  type: INPUTS_TYPES.NUMBER,
+  name: "Rating",
+  place_holder: "דירוג"
+}, {
+  type: INPUTS_TYPES.TEXT_AREA,
+  name: "Text",
+  place_holder: "המלצה"
+}];
+
+const upload_image_form = [{
+  type: INPUTS_TYPES.FILE,
+  name: "image",
+  place_holder: "הוסף תמונה"
+}, {
+  type: INPUTS_TYPES.TEXT,
+  name: "alt",
+  place_holder: "כיתוב"
 }];
 
 const user_messages = {
@@ -110,14 +151,20 @@ const user_messages = {
   upload_image_failed: "לא היה ניתן לעלות תמונה זאת נסה שוב מאוחר יותר",
   delete_image_failed: "לא הצלחנו למחוק את התמונה נסה שוב מאוחר יותר",
   edit_alt_failed: "לא היה ניתן לשנות את הכיתוב של התמונה נסה שוב מאוחר יותר",
-  login_failed: "אנא וודע די השם משתמש והסיסמה תואמים",
+  login_failed: "אנא וודא כי השם משתמש והסיסמה תואמים",
   auth_user_failed: "לא היה ניתן לאמת אותך נסה שוב מאוחר יותר",
-
+  delete_recommendation_failed: "לא היה ניתן למחוק את המלצה נסה שוב מאוחר יותר",
+  delete_recommendation_successful: "ההמלצה נמחקה בהצלחה",
+  update_recommendation_failed: "לא היה ניתן לעדכן את המלצה נסה שוב מאוחר יותר",
+  update_recommendation_successful: "ההמלצה עודכה בהצלחה",
+  add_recommendation_failed: "לא היה ניתן להוסיף המלצה נסה שוב מאוחר יותר",
+  add_recommendation_successful: "המלצה נוספה בהצלחה",
+  get_recommendation_failed: "לא היה ניתן לקבל את המלצות נסה שוב מאוחר יותר"
 };
 
 const number_images_per_page = 4;
 
-const whatsapp_message = "שלום%20אני מעוניין ביום הולדת כדורסל%";
+const whatsapp_message = "שלום,%20אני מעוניין ביום הולדת כדורסל";
 
 const Constants = {
   API_METHODS,
@@ -131,7 +178,10 @@ const Constants = {
   user_messages,
   number_images_per_page,
   contact_form,
-  whatsapp_message
+  whatsapp_message,
+  add_recommendation_form,
+  INPUTS_TYPES,
+  upload_image_form
 };
 
 export default Constants;
