@@ -11,3 +11,21 @@
   font-family: second;
   src: url(../public/fonts/nachlieliclm-light-webfont.ttf);
 }
+
+@layer components {
+  .bg-position-x-lg {
+    background-position-x: -15vw;
+  }
+
+  .bg-position-y-lg {
+    background-position-y: -45vh;
+  }
+
+  .bg-position-x {
+    background-position-x: -18vw;
+  }
+
+  .bg-position-y{
+    background-position-y: 0vh;
+  }  
+}

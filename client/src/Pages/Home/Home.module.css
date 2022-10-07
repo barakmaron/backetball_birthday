@@ -3,20 +3,9 @@
 }
 
 .main_container {
-  background-image: url(../../../public/images/main_background.webp);
+  background-image: url(../../../public/images/background_18.webp);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 50vh;
-}
-
-.main_image {
-  background-image: url(../../../public/images/ohad_brant.jpg);
-  background-position: center;
-  width: 256px;
-  height: 256px;
-  border-radius: 50%;
-  position: relative;
-  margin: 0 auto;
 }
 
 .main_text {
@@ -39,37 +28,6 @@
   text-align: center;
   max-width: 600px;
   padding: 15px;
-}
-
-.basketball {
-  background-image: url(../../../public/images/Basketball.png);
-  height: 50px;
-  width: 50px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-}
-
-.trophy {
-  background-image: url(../../../public/images/trophy.png);
-  height: 50px;
-  width: 50px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  right: 0;
-}
-
-.conpety {
-  background-image: url(../../../public/images/conpety.png);
-  height: 300px;
-  width: 300px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: -24px;
-  z-index: -1;
-  top: 25px;
 }
 
 .second_container {
@@ -125,4 +83,5 @@
 .card p {
   text-align: center;
   max-width: 400px;
+  height: 100%;
 }
