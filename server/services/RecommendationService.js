@@ -24,11 +24,9 @@ async function DeleteRecommendation(id) {
     }
 }
 
-async function UpdateText(id, text) {
+async function UpdateRecommendation(id, props) {
     try {
-        return await RecommendationDB.Update(id, {
-            Text: text
-        });
+        return await RecommendationDB.Update(id, props);
     } catch (err) {
         throw err;
     }
@@ -38,7 +36,7 @@ const RecommendationService = {
     GetAll,
     AddRecommendation,
     DeleteRecommendation,
-    UpdateText
+    UpdateRecommendation
 };
 
 export default RecommendationService;

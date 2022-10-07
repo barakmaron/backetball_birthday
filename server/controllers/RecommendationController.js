@@ -39,8 +39,7 @@ async function DeleteRecommendation(req, res) {
 async function UpdateText(req, res) {
     try {
         const { id } = req.params;
-        const { text } = req.body;
-        await RecommendationService.UpdateText(id, text);
+        await RecommendationService.UpdateRecommendation(id, req.body);
         return res.status(204).json();
     } catch(err) {
         throw err;
