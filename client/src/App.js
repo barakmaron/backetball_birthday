@@ -6,10 +6,11 @@ import StickyWhatsapp from "./Components/StickyWhatsapp";
 import Home from "./Pages/Home/Home";
 import CalendarPageConnector from './Pages/Calendar/CalendarConnector';
 import Constants from "./Constants";
-import UploadImageConnector from './Components/UploadImage/UploadImageConnector';
+import UploadImageConnector from './Pages/UploadImage/UploadImageConnector';
 import AdminConnector from "./Pages/Admin/AdminConnector";
 import { Toast } from 'monday-ui-react-core';
 import ContactConnector from "./Pages/Contact/ContactConnector";
+import RecommendationConnector from "./Pages/Recommendation/RecommendationConnector";
 
 function App({
   failed,
@@ -33,6 +34,7 @@ function App({
       <Route path="/admin" element={<AdminConnector></AdminConnector>}>
         <Route path="upload" element={<UploadImageConnector></UploadImageConnector>}/>
         <Route path="calendar" element={<CalendarPageConnector></CalendarPageConnector>}/>
+        <Route path="recommendation" element={<RecommendationConnector></RecommendationConnector>} />
       </Route>
       <Route path="/contact" element={<ContactConnector></ContactConnector>} />
     </Routes>
