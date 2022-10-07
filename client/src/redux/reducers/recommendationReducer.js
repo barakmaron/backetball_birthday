@@ -4,7 +4,7 @@ const initState = {
     recommendations: []
 };
 
-const reducer = (state, action) => {
+const reducer = (state = initState, action) => {
     const { type, payload } = action;
     switch (type) {
         case ACTIONS.GET_RECOMMENDATIONS: {
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
             return { ...state, recommendations: [ ...filter, found_recommendation ]}
         }
         default: {
-            return initState;
+            return state;
         }
     }
 };
