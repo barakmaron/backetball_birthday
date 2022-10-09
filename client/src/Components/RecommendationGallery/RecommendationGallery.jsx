@@ -23,7 +23,7 @@ const RecommendationGallery = ({
             })}
         </div>
         <div className='flex w-fit mx-auto my-4'>
-        { page * Constants.number_of_recommendation_per_page !== recommendations?.length && 
+        { page * Constants.number_of_recommendation_per_page < recommendations?.length && 
             <Button 
             onClick={() => setPage(page => page + 1)} 
             variant="contained">הצג עוד המלצות</Button> }
