@@ -19,10 +19,12 @@ const INPUTS_TYPES = {
 const routes = [{
   label: "דף הבית",
   location: "/"
-}, {
-  label: "לבדיקת זמינות",
-  location: "/calendar"
-}, {
+}, 
+//{
+//   label: "לבדיקת זמינות",
+//   location: "/calendar"
+// }, 
+{
   label: "צור קשר",
   location: "/contact"
 }];
